@@ -1,0 +1,15 @@
+Prefix pipelines/SGSeq/
+Plugin TranscriptFeatures inputfile none outputfile HG19
+Plugin TX2SG inputfile HG19.rds outputfile SG19
+Plugin SGAnalyze inputfile parameters/parameters.sganalyze.txt outputfile SpliceGraph
+Plugin SGFPlot inputfile SpliceGraph.rds outputfile SpliceGraph.pdf
+Plugin ScanBamParam inputfile bams/ outputfile SpliceGraphPred
+Plugin Annotate inputfile parameters/parameters.annotate.txt outputfile Annotate.rds
+Plugin SGFPlot inputfile Annotate.rds outputfile Annotate.pdf
+Plugin VariantAnalyze inputfile Annotate.rds outputfile VariantGraph.rds
+Plugin VariantFreq inputfile VariantGraph.rds outputfile none
+Plugin VariantPlot inputfile VariantGraph.rds outputfile VariantGraph.pdf
+Plugin VariantPred inputfile VariantGraph.rds outputfile VariantPred.rds
+Plugin SGPlot inputfile Annotate.rds outputfile Annotate.splicegraph.pdf
+Plugin CoveragePlot inputfile Annotate.rds outputfile Annotate.coverage.pdf
+Plugin VariantCount inputfile parameters/parameters.vc.txt outputfile variantcount.csv
